@@ -1,0 +1,9 @@
+{
+    "name": "simple-nodejs-app",
+    "description": "Simple nodejs app",
+    "version": "0.0.1",
+    "author": "Indrani Dey",
+    "scripts": {
+        "start": "node index.js"
+    }
+}
