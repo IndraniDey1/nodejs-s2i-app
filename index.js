@@ -1,11 +1,24 @@
-const http = require('http');
+var express = require('express'),
+    fs = require('fs'),
+    app = express();
+//    eps = require('ejs'),
+//    morgan = require('morgan');
 
-const server = http.createServer((request, response) => {
-    response.writeHead(200, {"Content-Type": "text/plain"});
-    response.end("Hello Node.js World! from Indrani ");
+var app = express();
+
+var ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+
+
+
+// app is running!
+app.get('/', function(req, res) {
+    res.send('Hello from NodeJS  at '+ new Date());
 });
 
-const port = process.env.PORT || 1337;
-server.listen(port);
 
-console.log("Server running at http://localhost:%d", port);
+
+app.listen(8080, ip);
+
+
+
+module.exports = app;
