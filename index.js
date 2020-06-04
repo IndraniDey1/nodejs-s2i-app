@@ -3,7 +3,7 @@ const https = require("https"),
 
   var key = process.env.KEY
   var cert = process.env.CERT 
-  var passPhrase = PASSPHRASE
+  var passPhrase = process.env.PASSPHRASE
 
 const options = {
   key: fs.readFileSync(key),
