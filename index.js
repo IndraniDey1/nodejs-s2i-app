@@ -1,14 +1,16 @@
-const https = require("https"),
-  fs = require("fs");
+const https = require("https");
+const  fs = require("fs");
 
-  var key = process.env.KEY
-  var cert = process.env.CERT 
-  var passPhrase = process.env.PASSPHRASE
+  var options = {
+  key =  process.env.KEY,
+  cert = process.env.CERT ,
+  passPhrase = process.env.PASSPHRASE
+  }
 
-const options = {
-  key: fs.readFileSync(key),
-  cert: fs.readFileSync(cert),
-  passPhrase: fs.readFileSync(passPhrase)
+const serverOptions =  {
+  key: fs.readFileSync(options.key),
+  cert: fs.readFileSync(options.cert),
+  passPhrase: fs.readFileSync(options.passPhrase)
 };
 
 const app = express();
@@ -20,4 +22,4 @@ app.use((req, res) => {
 
 app.listen(8080);
 
-https.createServer(options, app).listen(8080);
+https.createServer(serverOptions, app).listen(8080);
