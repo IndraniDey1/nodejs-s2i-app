@@ -1,9 +1,12 @@
 const https = require("https"),
   fs = require("fs");
 
+  key = process.env.KEY
+  cert = process.env.CERT 
+
 const options = {
-  key: fs.readFileSync("/apps/certs/key.pem"),
-  cert: fs.readFileSync("/apps/cert/cert.pem")
+  key: fs.readFileSync(key),
+  cert: fs.readFileSync(cert)
 };
 
 const app = express();
