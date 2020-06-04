@@ -1,24 +1,18 @@
-var express = require('express'),
-    fs = require('fs'),
-    app = express();
-//    eps = require('ejs'),
-//    morgan = require('morgan');
+const https = require("https"),
+  fs = require("fs");
 
-var app = express();
+const options = {
+  key: fs.readFileSync("/apps/certs/key.pem"),
+  cert: fs.readFileSync("/apps/cert/cert.pem")
+};
 
-var ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+const app = express();
 
-
-
-// app is running!
-app.get('/', function(req, res) {
-    res.send('Hello from NodeJS on behalf of Indrani Dey at '+ new Date());
+app.use((req, res) => {
+  res.writeHead(200);
+  res.end("hello world from Indrani\n");
 });
 
+app.listen(8080);
 
-
-app.listen(8080, ip);
-
-
-
-module.exports = app;
+https.createServer(options, app).listen(8080);
