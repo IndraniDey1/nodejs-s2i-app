@@ -15,13 +15,13 @@ const serverOptions =  {
   cert: fs.readFileSync(options.cert) 
 };
 
-const app = express();
+var app = express();
 
-app.use((req, res) => {
-  res.writeHead(200);
-  res.end("hello world from Indrani\n");
+var ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+
+// app is running!
+app.get('/', function(req, res) {
+    res.send('Hello from NodeJS on behalf of Indrani Dey at '+ new Date());
 });
 
-app.listen(8080);
-
-https.createServer(serverOptions, app).listen(8080);
+https.createServer(serverOptions, app).listen(8080,ip);
