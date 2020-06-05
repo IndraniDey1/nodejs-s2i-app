@@ -9,8 +9,7 @@ const  fs = require("fs");
 
 const serverOptions =  {
   key: fs.readFileSync(options.key),
-  cert: fs.readFileSync(options.cert),
-  passPhrase: fs.readFileSync(options.passPhrase)
+  cert: fs.readFileSync(options.cert) 
 };
 
 const app = express();
