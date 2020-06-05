@@ -2,9 +2,9 @@ const https = require("https");
 const  fs = require("fs");
 
   var options = {
-  key =  process.env.KEY,
-  cert = process.env.CERT ,
-  passPhrase = process.env.PASSPHRASE
+  key: process.env.KEY,
+  cert: process.env.CERT ,
+  passPhrase: process.env.PASSPHRASE
   }
 
 const serverOptions =  {
